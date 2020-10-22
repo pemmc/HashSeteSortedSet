@@ -8,13 +8,33 @@ namespace HashSeteSortedSet
     {
         static void Main(string[] args)
         {
-            HashSet<string> set = new HashSet<string>();
+            try
+            {
+                HashSet<string> sqlCommands = new HashSet<string>();
 
-            set.Add("Maria");
-            set.Add("Alex");
+                sqlCommands.Add("SELECT * WHERE CAMPO1 = CAMPO2");
+                sqlCommands.Add("UPDATE CAMPO1 = 3, CAMPO2 WHERE CAMPO10 = 2");
+                sqlCommands.Add("SELECT * WHERE CAMPO1 = CAMPO10");
+                sqlCommands.Add("SELECT *");
+                sqlCommands.Add("UPDATE CAMPO1 = 2 WHERE CAMPO1 = CAMPO2");
 
-            //Ele testa o gethashcode e depois se existe ele usa o equals para confirmar!
-            Console.WriteLine(set.Contains("Maria"));
+
+                //Ele testa o gethashcode e depois se existe ele usa o equals para confirmar!
+                if(sqlCommands.Contains("SELECT *"))
+                {
+                    throw new InvalidOperationException("Você está tentando adicionar um SQL já existente");
+
+                }
+
+                Console.WriteLine("Comando adicionado: " + "SELECT *");
+
+            }
+
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine(e.Message);
+
+            }
 
         }
 
