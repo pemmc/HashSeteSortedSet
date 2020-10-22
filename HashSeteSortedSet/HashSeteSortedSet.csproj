@@ -5,4 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Entities\EmptyStruct.cs" />
+  </ItemGroup>
 </Project>
