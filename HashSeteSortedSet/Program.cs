@@ -8,22 +8,46 @@ namespace HashSeteSortedSet
     {
         static void Main(string[] args)
         {
+            //OPERAÇÕES ALGÉBRICAS
+            SortedSet<int> a = new SortedSet<int>() { 0, 2, 4, 5, 6, 8, 10 };
+            SortedSet<int> b = new SortedSet<int>() { 5, 6, 7, 8, 9, 10 };
 
-            //Instanciamos nosso conjuunto na memória
-            HashSet<string> set = new HashSet<string>();
+            PrintCollection(a); //Resultado: 0 2 4 5 6 8 10
 
-            set.Add("TV");
-            set.Add("Notebook");
-            set.Add("Tablet");
+            //União
 
-            Console.WriteLine(set.Contains("Notebook")); //True
-            Console.WriteLine(set.Contains("SmartPhone")); //False
+            SortedSet<int> c = new SortedSet<int>(a);
 
-            foreach(string p in set)
+            c.UnionWith(b);
+
+            PrintCollection(c); //Resultado: 0 2 4 5 6 7 8 9 10 
+
+            //Interseção
+
+            SortedSet<int> d = new SortedSet<int>(a);
+            d.IntersectWith(b);
+
+            PrintCollection(d); //Resultado: 5 6 8 10
+
+            //Diferenca
+            SortedSet<int> e = new SortedSet<int>(a);
+            e.ExceptWith(b);
+
+
+            PrintCollection(e); //Resultado: 0 2 4
+        }
+
+        static void PrintCollection<T>(IEnumerable<T> collection){
+            foreach(T obj in collection)
             {
-                Console.WriteLine(p);
+                Console.Write(obj + " ");
 
             }
+
+            Console.WriteLine();
+
         }
+
+
     }
 }
